@@ -1,4 +1,18 @@
 import { createBrowserRouter } from "react-router-dom";
+import Home from "../pages/Home/Home";
+import Main from "../layout/Main/Main";
+import SignIn from "../pages/SignIn/SignIn";
+import SignUp from "../pages/SignUP/SignUp";
+import Contact from "../pages/Contact/Contact";
+import Profile from "../pages/Profile/Profile";
+import HostingDashboard from "../layout/HostingDashboard/HostingDashboard";
+import PrivateRout from "./PrivateRout";
+import Earnings from "../pages/Earnings/Earnings";
+import CreateNewList from "../pages/CreateNewList/CreateNewList";
+import Listing from "../pages/Listing/Listing";
+import Insights from "../pages/Insights/Insights";
+import GuideBooks from "../pages/GuideBooks/GuideBooks";
+import Reservations from "../pages/Reservations/Reservations";
 
 export const router = createBrowserRouter([
      {
@@ -10,12 +24,12 @@ export const router = createBrowserRouter([
                  element:<Home/>
              },
              {
-                 path:'login',
-                 element:<Login/>
+                 path:'signin',
+                 element:<SignIn/>
              },
              {
-                 path: 'registration',
-                 element: <Registration/>
+                 path: 'signup',
+                 element: <SignUp/>
              },
              {
                  path: 'contact',
@@ -26,10 +40,7 @@ export const router = createBrowserRouter([
                  path: 'profile',
                  element: <Profile/>
              },
-             {
-                path: 'individual-earnings/:id',
-               element: <IndividualEarnings/>
-             }
+             
          ]
      },
  
@@ -49,7 +60,7 @@ export const router = createBrowserRouter([
              },
              {
                  path: 'insights',
-                 element: <Insights></Insights>
+                 element: <Insights/>
              },
              {
                  path: 'guide-books',
@@ -60,13 +71,10 @@ export const router = createBrowserRouter([
                  element: <CreateNewList></CreateNewList>
              },
              {
-                 path: 'listings',
-                 element: <Listings></Listings>
+                 path: 'listing',
+                 element: <Listing/>
              },
-             {
-                 path: 'individual-earnings/:id',
-                 element: <IndividualEarnings></IndividualEarnings>
-             },
+             
              
          ]
      }

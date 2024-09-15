@@ -1,12 +1,11 @@
 import { createContext, useEffect, useState } from "react";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import app from "../../firebase/firebase.config";
 
 // Create AuthContext
 export const AuthContext = createContext();
 
 // Initialize Firebase Auth
-const auth = getAuth(app);
+
+// const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
   // State variables
@@ -83,56 +82,56 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   // Fetch earning list
-  useEffect(() => {
-    const fetchEarningList = async () => {
-      setLoading(true);
-      try {
-        const response = await fetch('');
-        if (!response.ok) {
-          throw new Error(`Error fetching earningList.json: ${response.status} ${response.statusText}`);
-        }
-        const data = await response.json();
-        setEarningList(data);
-      } catch (error) {
-        console.error('Error fetching earningList.json:', error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchEarningList = async () => {
+  //     setLoading(true);
+  //     try {
+  //       const response = await fetch('');
+  //       if (!response.ok) {
+  //         throw new Error(`Error fetching earningList.json: ${response.status} ${response.statusText}`);
+  //       }
+  //       const data = await response.json();
+  //       setEarningList(data);
+  //     } catch (error) {
+  //       console.error('Error fetching earningList.json:', error.message);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
-    fetchEarningList();
-  }, []);
+  //   fetchEarningList();
+  // }, []);
 
-  // Registration and login functions
-  const registration = (email, password) => {
-    setLoading(true);
-    signInWithEmailAndPassword(auth, email, password)
-      .then((result) => {
-        const user = result.user;
-        setUser(user);
-      })
-      .catch((error) => {
-        console.error('Registration failed:', error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  };
+  // // Registration and login functions
+  // const registration = (email, password) => {
+  //   setLoading(true);
+  //   signInWithEmailAndPassword(auth, email, password)
+  //     .then((result) => {
+  //       const user = result.user;
+  //       setUser(user);
+  //     })
+  //     .catch((error) => {
+  //       console.error('Registration failed:', error);
+  //     })
+  //     .finally(() => {
+  //       setLoading(false);
+  //     });
+  // };
 
-  const login = (email, password) => {
-    setLoading(true);
-    signInWithEmailAndPassword(auth, email, password)
-      .then((result) => {
-        const user = result.user;
-        setUser(user);
-      })
-      .catch((error) => {
-        console.error('Login failed:', error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  };
+  // const login = (email, password) => {
+  //   setLoading(true);
+  //   signInWithEmailAndPassword(auth, email, password)
+  //     .then((result) => {
+  //       const user = result.user;
+  //       setUser(user);
+  //     })
+  //     .catch((error) => {
+  //       console.error('Login failed:', error);
+  //     })
+  //     .finally(() => {
+  //       setLoading(false);
+  //     });
+  // };
 
   // Create user placeholder (can be removed or replaced as needed)
   useEffect(() => {
@@ -154,8 +153,8 @@ const AuthProvider = ({ children }) => {
     loading,
     earningList,
     usersData,
-    login,
-    registration,
+    // login,
+    // registration,
     
   };
 
