@@ -22,7 +22,7 @@ const AuthProvider = ({ children }) => {
     const fetchAllHotelData = async () => {
       setLoading(true);
       try {
-        const response = await fetch('http://localhost:5000/all-hotel-data');
+        const response = await fetch('https://briancaceres-abnb-server.vercel.app/all-hotel-data');
         if (!response.ok) {
           throw new Error(`Error fetching hotelData.json: ${response.status} ${response.statusText}`);
         }
@@ -44,7 +44,7 @@ const AuthProvider = ({ children }) => {
     const fetchUsersData = async () => {
       setLoading(true);
       try {
-        const response = await fetch('http://localhost:5000/users');
+        const response = await fetch('https://briancaceres-abnb-server.vercel.app/users');
         if (!response.ok) {
           throw new Error(`Error fetching hotelData.json: ${response.status} ${response.statusText}`);
         }
