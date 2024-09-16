@@ -4,7 +4,7 @@ const Cards = ({ data }) => {
     const { id, price, date, location, image } = data;
   
     return (
-      <div className=" space-y-10 md:w-[500px] lg:w-[500px]  m-0 md:gap-5">
+      <div className=" space-y-10  m-0 md:gap-5">
         <Link to='/'>
         <div className="bg-white p-4 rounded-lg shadow-md">
 

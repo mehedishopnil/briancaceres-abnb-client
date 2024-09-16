@@ -3,55 +3,46 @@ import { createContext, useEffect, useState } from "react";
 // Create AuthContext
 export const AuthContext = createContext();
 
-// Initialize Firebase Auth
-
-// const auth = getAuth(app);
-
 const AuthProvider = ({ children }) => {
   // State variables
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true); // Set initial loading to true
   const [AllHotelData, setAllHotelData] = useState([]);
   const [allHotels, setAllHotels] = useState([]);
   const [earningList, setEarningList] = useState([]);
   const [usersData, setUsersData] = useState([]);
 
-
   // Fetch hotel data
   useEffect(() => {
     const fetchAllHotelData = async () => {
-      setLoading(true);
       try {
         const response = await fetch('https://briancaceres-abnb-server.vercel.app/all-hotel-data');
         if (!response.ok) {
-          throw new Error(`Error fetching hotelData.json: ${response.status} ${response.statusText}`);
+          throw new Error(`Error fetching all-hotel-data: ${response.status} ${response.statusText}`);
         }
         const data = await response.json();
+        setLoading(false);
         setAllHotelData(data);
       } catch (error) {
-        console.error('Error fetching hotelData.json:', error.message);
-      } finally {
-        setLoading(false);
-      }
+        console.error('Error fetching all-hotel-data:', error.message);
+      } 
     };
 
     fetchAllHotelData();
   }, []);
 
-
   // Fetch users data
   useEffect(() => {
     const fetchUsersData = async () => {
-      setLoading(true);
       try {
         const response = await fetch('https://briancaceres-abnb-server.vercel.app/users');
         if (!response.ok) {
-          throw new Error(`Error fetching hotelData.json: ${response.status} ${response.statusText}`);
+          throw new Error(`Error fetching users: ${response.status} ${response.statusText}`);
         }
         const data = await response.json();
         setUsersData(data);
       } catch (error) {
-        console.error('Error fetching UsersData.json:', error.message);
+        console.error('Error fetching users:', error.message);
       } finally {
         setLoading(false);
       }
@@ -60,26 +51,26 @@ const AuthProvider = ({ children }) => {
     fetchUsersData();
   }, []);
 
-  // Fetch hotel list data
-  useEffect(() => {
-    const fetchAllHotels = async () => {
-      setLoading(true);
-      try {
-        const response = await fetch('');
-        if (!response.ok) {
-          throw new Error(`Error fetching AllHotels.json: ${response.status} ${response.statusText}`);
-        }
-        const data = await response.json();
-        setAllHotels(data);
-      } catch (error) {
-        console.error('Error fetching AllHotels.json:', error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
+  // // Fetch hotel list data
+  // useEffect(() => {
+  //   const fetchAllHotels = async () => {
+  //     setLoading(true);
+  //     try {
+  //       const response = await fetch('');
+  //       if (!response.ok) {
+  //         throw new Error(`Error fetching all-hotels: ${response.status} ${response.statusText}`);
+  //       }
+  //       const data = await response.json();
+  //       setAllHotels(data);
+  //     } catch (error) {
+  //       console.error('Error fetching all-hotels:', error.message);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
-    fetchAllHotels();
-  }, []);
+  //   fetchAllHotels();
+  // }, []);
 
   // Fetch earning list
   // useEffect(() => {
@@ -88,12 +79,12 @@ const AuthProvider = ({ children }) => {
   //     try {
   //       const response = await fetch('');
   //       if (!response.ok) {
-  //         throw new Error(`Error fetching earningList.json: ${response.status} ${response.statusText}`);
+  //         throw new Error(`Error fetching earning-list: ${response.status} ${response.statusText}`);
   //       }
   //       const data = await response.json();
   //       setEarningList(data);
   //     } catch (error) {
-  //       console.error('Error fetching earningList.json:', error.message);
+  //       console.error('Error fetching earning-list:', error.message);
   //     } finally {
   //       setLoading(false);
   //     }
@@ -133,18 +124,6 @@ const AuthProvider = ({ children }) => {
   //     });
   // };
 
-  // Create user placeholder (can be removed or replaced as needed)
-  useEffect(() => {
-    if (loading) {
-      const createUser = () => {
-        const user = "Mehedi Hasan"; // Placeholder, replace or remove as needed
-        setUser(user);
-      };
-
-      createUser();
-    }
-  }, [loading]);
-
   // Context value
   const authInfo = {
     user,
@@ -155,7 +134,6 @@ const AuthProvider = ({ children }) => {
     usersData,
     // login,
     // registration,
-    
   };
 
   return (
