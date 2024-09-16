@@ -34,34 +34,35 @@ const HostingDashboard = () => {
             alt="Airbnb Logo"
           /></Link>
           </div>
-          <ul className="menu p-4 text-gray-700 font-bold text-lg">
+          
+          <ul className="menu p-4 text-gray-700 font-bold text-lg space-y-3">
             <li>
-              <Link to="listings">
+              <Link to="listing" className="flex items-center gap-2">
               <HiOutlineHomeModern /> Listings
               </Link>
             </li>
             <li>
-              <Link to="reservation">
+              <Link to="reservation" className="flex items-center gap-2">
                 <MdOutlineLuggage /> Reservations
               </Link>
             </li>
             <li>
-              <Link to="earnings">
+              <Link to="earnings" className="flex items-center gap-2">
                 <LiaMoneyBillSolid /> Earnings
               </Link>
             </li>
             <li>
-              <Link to="insights">
+              <Link to="insights" className="flex items-center gap-2">
                 <TbBrandGoogleAnalytics /> Insights
               </Link>
             </li>
             <li>
-              <Link to="guide-books">
+              <Link to="guide-books" className="flex items-center gap-2">
                 <PiBookOpenText /> Guidebooks
               </Link>
             </li>
             <li>
-              <Link to="create-new-list">
+              <Link to="create-new-list" className="flex items-center gap-2">
                 <MdAddHome /> Create a new list
               </Link>
             </li>
@@ -69,11 +70,11 @@ const HostingDashboard = () => {
             <div className="border border-gray-400"></div>
 
             <li>
-              <Link to="/">
+              <Link to="/" className="flex items-center gap-2">
               <FaHome /> Home
               </Link>
 
-              <Link to="/profile">
+              <Link to="/profile" className="flex items-center gap-2">
               <FaUser /> Profile
               </Link>
             </li>
@@ -111,7 +112,7 @@ const HostingDashboard = () => {
                 <div>
           
         </div>
-                  <ul className="menu text-gray-700 font-bold text-xl">
+                  {/* <ul className="menu  text-gray-700 font-bold text-xl">
                     <li>
                       <Link to="reservation">Reservations</Link>
                     </li>
@@ -127,7 +128,7 @@ const HostingDashboard = () => {
                     <li>
                       <Link to="reservation">Create a new list</Link>
                     </li>
-                  </ul>
+                  </ul> */}
                 </Disclosure.Panel>
               </Transition>
             </>

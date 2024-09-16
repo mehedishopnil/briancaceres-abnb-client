@@ -12,7 +12,7 @@ const Home = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const itemsPerPage = 9;
 
-  const { hotelData } = useContext(AuthContext);
+  const { AllHotelData } = useContext(AuthContext);
 
   const selectedCategories = ['Tropical', 'Beach', 'Tiny homes', 'Farms', 'Islands'];
 
@@ -24,7 +24,7 @@ const Home = () => {
     'Islands': <GiIsland />,
   };
 
-  const filteredData = hotelData
+  const filteredData = AllHotelData
     .filter((item) => (selectedCategory === 'All' || item.category === selectedCategory))
     .filter(
       (item) =>
@@ -34,7 +34,7 @@ const Home = () => {
     .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
   const totalPages = Math.ceil(
-    hotelData.filter((item) => selectedCategory === 'All' || item.category === selectedCategory).length / itemsPerPage
+    AllHotelData.filter((item) => selectedCategory === 'All' || item.category === selectedCategory).length / itemsPerPage
   );
 
   const handlePageChange = (newPage) => {

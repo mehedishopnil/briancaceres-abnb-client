@@ -11,23 +11,23 @@ const AuthProvider = ({ children }) => {
   // State variables
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [hotelData, setHotelData] = useState([]);
-  const [hotelListData, setHotelListData] = useState([]);
+  const [AllHotelData, setAllHotelData] = useState([]);
+  const [allHotels, setAllHotels] = useState([]);
   const [earningList, setEarningList] = useState([]);
   const [usersData, setUsersData] = useState([]);
 
 
   // Fetch hotel data
   useEffect(() => {
-    const fetchHotelData = async () => {
+    const fetchAllHotelData = async () => {
       setLoading(true);
       try {
-        const response = await fetch('');
+        const response = await fetch('http://localhost:5000/all-hotel-data');
         if (!response.ok) {
           throw new Error(`Error fetching hotelData.json: ${response.status} ${response.statusText}`);
         }
         const data = await response.json();
-        setHotelData(data);
+        setAllHotelData(data);
       } catch (error) {
         console.error('Error fetching hotelData.json:', error.message);
       } finally {
@@ -35,16 +35,16 @@ const AuthProvider = ({ children }) => {
       }
     };
 
-    fetchHotelData();
+    fetchAllHotelData();
   }, []);
 
 
   // Fetch users data
   useEffect(() => {
-    const fetchHotelData = async () => {
+    const fetchUsersData = async () => {
       setLoading(true);
       try {
-        const response = await fetch('');
+        const response = await fetch('http://localhost:5000/users');
         if (!response.ok) {
           throw new Error(`Error fetching hotelData.json: ${response.status} ${response.statusText}`);
         }
@@ -57,28 +57,28 @@ const AuthProvider = ({ children }) => {
       }
     };
 
-    fetchHotelData();
+    fetchUsersData();
   }, []);
 
   // Fetch hotel list data
   useEffect(() => {
-    const fetchHotelListData = async () => {
+    const fetchAllHotels = async () => {
       setLoading(true);
       try {
         const response = await fetch('');
         if (!response.ok) {
-          throw new Error(`Error fetching hotelListData.json: ${response.status} ${response.statusText}`);
+          throw new Error(`Error fetching AllHotels.json: ${response.status} ${response.statusText}`);
         }
         const data = await response.json();
-        setHotelListData(data);
+        setAllHotels(data);
       } catch (error) {
-        console.error('Error fetching hotelListData.json:', error.message);
+        console.error('Error fetching AllHotels.json:', error.message);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchHotelListData();
+    fetchAllHotels();
   }, []);
 
   // Fetch earning list
@@ -148,8 +148,8 @@ const AuthProvider = ({ children }) => {
   // Context value
   const authInfo = {
     user,
-    hotelData,
-    hotelListData,
+    AllHotelData,
+    allHotels,
     loading,
     earningList,
     usersData,
