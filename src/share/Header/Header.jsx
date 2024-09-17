@@ -11,10 +11,6 @@ const Header = () => {
 
   const user = usersData?.[0]; // Extracting the first user from usersData (if available)
 
-  // If no user data is available, show a message
-  if (!user) {
-    return <p>No user data available</p>;
-  }
 
   // Function to toggle mobile menu visibility
   const toggleMobileMenu = () => {
