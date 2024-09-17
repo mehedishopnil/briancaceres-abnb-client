@@ -9,6 +9,7 @@ import { FaHome, FaUser } from "react-icons/fa";
 import { HiOutlineHomeModern } from "react-icons/hi2";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider/AuthProvider";
+import Loading from "../../components/Loading";
 
 
 const HostingDashboard = () => {
@@ -17,7 +18,7 @@ const HostingDashboard = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-screen">
-        <p>Loading...</p> {/* Replace with a spinner or more sophisticated loading indicator */}
+        <p><Loading/></p> {/* Replace with a spinner or more sophisticated loading indicator */}
       </div>
     );
   }
