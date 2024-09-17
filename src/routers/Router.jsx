@@ -13,6 +13,7 @@ import Listing from "../pages/Listing/Listing";
 import Insights from "../pages/Insights/Insights";
 import GuideBooks from "../pages/GuideBooks/GuideBooks";
 import Reservations from "../pages/Reservations/Reservations";
+import IndividualEarnings from "../pages/IndividualEarnings/IndividualEarnings";
 
 export const router = createBrowserRouter([
      {
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
                  path: 'profile',
                  element: <Profile/>
              },
+             {
+                path: 'individual-earnings/:id',
+                element: <IndividualEarnings/>
+             }
              
          ]
      },
@@ -74,6 +79,10 @@ export const router = createBrowserRouter([
                  path: 'listing',
                  element: <Listing/>
              },
+             {
+                path: 'individual-earnings/:id',
+                element: <IndividualEarnings/>
+             }
              
              
          ]
