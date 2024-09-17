@@ -5,11 +5,11 @@ export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   // State variables
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(true);
   const [loading, setLoading] = useState(true); // Set initial loading to true
   const [AllHotelData, setAllHotelData] = useState([]);
-  const [allHotels, setAllHotels] = useState([]);
-  const [earningList, setEarningList] = useState([]);
+  const [allHotelsList, setAllHotelsList  ] = useState([]);
+  const [allEarning, setAllEarning] = useState([]);
   const [usersData, setUsersData] = useState([]);
 
   // Fetch hotel data
@@ -51,47 +51,47 @@ const AuthProvider = ({ children }) => {
     fetchUsersData();
   }, []);
 
-  // // Fetch hotel list data
-  // useEffect(() => {
-  //   const fetchAllHotels = async () => {
-  //     setLoading(true);
-  //     try {
-  //       const response = await fetch('');
-  //       if (!response.ok) {
-  //         throw new Error(`Error fetching all-hotels: ${response.status} ${response.statusText}`);
-  //       }
-  //       const data = await response.json();
-  //       setAllHotels(data);
-  //     } catch (error) {
-  //       console.error('Error fetching all-hotels:', error.message);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
+  // Fetch hotel list data
+  useEffect(() => {
+    const fetchAllHotels = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch('https://briancaceres-abnb-server.vercel.app/all-hotels-list');
+        if (!response.ok) {
+          throw new Error(`Error fetching all-hotels: ${response.status} ${response.statusText}`);
+        }
+        const data = await response.json();
+        setAllHotelsList(data);
+      } catch (error) {
+        console.error('Error fetching all-hotels:', error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  //   fetchAllHotels();
-  // }, []);
+    fetchAllHotels();
+  }, []);
 
-  // Fetch earning list
-  // useEffect(() => {
-  //   const fetchEarningList = async () => {
-  //     setLoading(true);
-  //     try {
-  //       const response = await fetch('');
-  //       if (!response.ok) {
-  //         throw new Error(`Error fetching earning-list: ${response.status} ${response.statusText}`);
-  //       }
-  //       const data = await response.json();
-  //       setEarningList(data);
-  //     } catch (error) {
-  //       console.error('Error fetching earning-list:', error.message);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
+  //Fetch earning list
+  useEffect(() => {
+    const fetchEarningList = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch('https://briancaceres-abnb-server.vercel.app/all-earnings');
+        if (!response.ok) {
+          throw new Error(`Error fetching earning-list: ${response.status} ${response.statusText}`);
+        }
+        const data = await response.json();
+        setAllEarning(data);
+      } catch (error) {
+        console.error('Error fetching earning-list:', error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  //   fetchEarningList();
-  // }, []);
+    fetchEarningList();
+  }, []);
 
   // // Registration and login functions
   // const registration = (email, password) => {
@@ -128,9 +128,9 @@ const AuthProvider = ({ children }) => {
   const authInfo = {
     user,
     AllHotelData,
-    allHotels,
+    allHotelsList,
     loading,
-    earningList,
+    allEarning,
     usersData,
     // login,
     // registration,
