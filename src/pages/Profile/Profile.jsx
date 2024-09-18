@@ -8,15 +8,20 @@ import { MdOutlinePets } from "react-icons/md";
 import { MdOutlineLightbulbCircle } from "react-icons/md";
 import { MdOutlineRoomService } from "react-icons/md";
 import { FaStar } from 'react-icons/fa';
+import Loading from "../../components/Loading";
 
 const Profile = () => {
   const { usersData } = useContext(AuthContext);
 
-  
+  // Check if data is still loading
+  if (!usersData || usersData.length === 0) {
+    return <p><Loading/></p>; // Show a loading message while the data is being fetched
+  }
+
   const user = usersData[0];
 
   if (!user) {
-    return <p>No user data available</p>;
+    return <p>data is not available</p>; // Fallback if no user data is present
   }
 
   const { name, img, title, reviewsCount, rating, hostingCount, gender, education, work, uniqueHomeFeature, funFact, pets, guestInteractions, about } = user;
