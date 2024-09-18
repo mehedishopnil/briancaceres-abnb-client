@@ -4,25 +4,28 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider/AuthProvider";
 
 const ListingCards = ({ item, index }) => {
-  const navigate = useNavigate();
-  const { earningList } = React.useContext(AuthContext);
 
-  const findEarningListById = (id) => {
-    return earningList.find((earningItem) => earningItem.id === id);
+  const navigate = useNavigate();
+  const { allEarning } = React.useContext(AuthContext);
+
+  // Search the earnings list by name instead of id
+  const findEarningListByName = (name) => {
+    return allEarning.find((earningItem) => earningItem.name === name);
   };
 
   const handleClick = () => {
-    const selectedEarning = findEarningListById(item.id);
+    const selectedEarning = findEarningListByName(item.name);
 
     if (selectedEarning) {
-      navigate(`/individual-earnings/${item.id}`);
+      // Navigate using name instead of id
+      navigate(`/individual-earnings/${item.name}`);
     } else {
       console.error("Matching data not found");
     }
   };
 
   return (
-    <Link to={`/individual-earnings/${item.id}`}>
+    <div onClick={handleClick}>
       <div className="border rounded border-gray-200 mb-4 md:mb-4 p-4 flex items-center justify-between cursor-pointer">
         <div className="flex items-center gap-10">
           <div className="avatar">
@@ -32,11 +35,11 @@ const ListingCards = ({ item, index }) => {
           </div>
           <div>
             <p className="font-semibold">{item.name}</p>
-            <p>{item.description}</p>
+            <p className="truncate max-w-xs">{item.description}</p>
           </div>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 

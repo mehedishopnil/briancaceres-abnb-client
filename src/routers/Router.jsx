@@ -42,7 +42,7 @@ export const router = createBrowserRouter([
                  element: <Profile/>
              },
              {
-                path: 'individual-earnings/:id',
+                path: 'individual-earnings/:name',
                 element: <IndividualEarnings/>
              }
              
@@ -80,7 +80,7 @@ export const router = createBrowserRouter([
                  element: <Listing/>
              },
              {
-                path: 'individual-earnings/:id',
+                path: 'individual-earnings/:name',
                 element: <IndividualEarnings/>
              }
              

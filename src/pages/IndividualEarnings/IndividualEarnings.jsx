@@ -15,18 +15,18 @@ import { AuthContext } from "../../providers/AuthProvider/AuthProvider";
 
 const IndividualEarnings = () => {
   const { allEarning } = useContext(AuthContext);
-  const { id } = useParams();
+  const { name } = useParams(); // Using name instead of id
   const navigate = useNavigate();
 
-  // Convert the id from string to number
-  const selectedEarning = allEarning.find((item) => item.id === Number(id));
+  // Find the selectedEarning based on the 'name'
+  const selectedEarning = allEarning.find((item) => item.name === name);
 
   if (!selectedEarning) {
     // Render a message when matching data is not found
     return (
       <div>
         <h2>Data Not Found</h2>
-        <p>No earnings data found for id {id}.</p>
+        <p>No earnings data found for the name "{name}".</p>
       </div>
     );
   }

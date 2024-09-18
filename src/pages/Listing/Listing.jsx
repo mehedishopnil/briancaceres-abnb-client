@@ -42,15 +42,19 @@ const Listings = () => {
           <BsSearch size={20} color="#777" />
         </div>
       </div>
+
+
       <div className="flex justify-start ml-10 md:ml-[280px]">
         <h2 className="text-xl font-semibold mb-5">
           {user ? (loading ? "Loading..." : `${filteredProperties.length} Listings`) : "Please log in to view listings"} {/* Renamed user to user */}
         </h2>
       </div>
+
+      
       <div className="w-4/5 md:w-2/3 mx-auto">
         {user ? (
           loading ? (
-            <p><Loading/></p> // You can replace this with a loading indicator or placeholder
+            <p><Loading/></p> 
           ) : filteredProperties.length ? (
             filteredProperties.map((property, idx) => ( 
               <ListingCards key={property.id} item={property} index={idx} /> 
@@ -66,4 +70,4 @@ const Listings = () => {
   );
 };
 
-export default Listings; // Renamed default export
+export default Listings;
