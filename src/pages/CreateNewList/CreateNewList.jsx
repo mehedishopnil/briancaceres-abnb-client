@@ -19,8 +19,8 @@ const CreateNewList = () => {
     // Function to generate random earnings data
     const generateRandomEarnings = () => {
       return {
-        2023: (Math.random() * (2600 - 2400) + 2400).toFixed(2), // Earnings between 2400 and 2600
-        2024: (Math.random() * (2800 - 2600) + 2600).toFixed(2), // Earnings between 2600 and 2800
+        2023: parseFloat((Math.random() * (2600 - 2400) + 2400).toFixed(2)), // Earnings between 2400 and 2600
+        2024: parseFloat((Math.random() * (2800 - 2600) + 2600).toFixed(2)), // Earnings between 2600 and 2800
       };
     };
 

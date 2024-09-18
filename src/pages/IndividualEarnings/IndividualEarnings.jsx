@@ -12,6 +12,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { AuthContext } from "../../providers/AuthProvider/AuthProvider";
+import Loading from "../../components/Loading";
 
 const IndividualEarnings = () => {
   const { allEarning } = useContext(AuthContext);
@@ -25,8 +26,7 @@ const IndividualEarnings = () => {
     // Render a message when matching data is not found
     return (
       <div>
-        <h2>Data Not Found</h2>
-        <p>No earnings data found for the name "{name}".</p>
+        <Loading/>
       </div>
     );
   }
