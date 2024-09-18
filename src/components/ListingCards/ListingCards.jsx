@@ -50,8 +50,8 @@ const ListingCards = ({ item, index }) => {
             </div>
           </div>
           <div>
-            <p className="font-semibold">{item.name}</p>
-            <p className="truncate max-w-xs">{item.description}</p>
+            <p className="text-sm font-semibold">{item.name}</p>
+            <p className="truncate max-w-60">{item.description}</p>
           </div>
         </div>
       </div>
